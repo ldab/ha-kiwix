@@ -93,10 +93,10 @@ bashio::log.info "Using --library and --monitorLibrary for automatic ZIM file de
 # Instead, we rely on nginx sub_filter and JavaScript to rewrite paths
 
 if [[ -f "${LIBRARY_XML}" ]]; then
-    nohup kiwix-serve --library --monitorLibrary --port ${KIWIX_INTERNAL_PORT} "${LIBRARY_XML}" \
+    nohup kiwix-serve --library --monitorLibrary --address 127.0.0.1 --port ${KIWIX_INTERNAL_PORT} "${LIBRARY_XML}" \
         > /proc/1/fd/1 2>/proc/1/fd/2 &
 else
-    nohup kiwix-serve --library --monitorLibrary --port ${KIWIX_INTERNAL_PORT} . \
+    nohup kiwix-serve --library --monitorLibrary --address 127.0.0.1 --port ${KIWIX_INTERNAL_PORT} . \
         > /proc/1/fd/1 2>/proc/1/fd/2 &
 fi
 KIWIX_PID=$!
